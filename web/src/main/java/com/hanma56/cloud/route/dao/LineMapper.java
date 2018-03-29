@@ -1,8 +1,8 @@
 package com.hanma56.cloud.route.dao;
 
+import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.baomidou.mybatisplus.plugins.pagination.Pagination;
 import com.hanma56.cloud.route.model.Line;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -19,10 +19,11 @@ public interface LineMapper extends BaseMapper<Line> {
 
     /**
      * 通过创建人查询线路列表
+     *
      * @param page
      * @param creator
      * @return
      */
-    List<Line> selectByCreator(Pagination page,@Param("creator") Long creator);
+    List<Line> selectByCreator(@Param("page") Pagination page, @Param("creator") Long creator, @Param("lineName") String lineName, @Param("startCityName") String startCityName, @Param("endCityName") String endCityName);
 
 }

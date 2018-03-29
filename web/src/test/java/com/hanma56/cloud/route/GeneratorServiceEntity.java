@@ -28,7 +28,7 @@ public class GeneratorServiceEntity {
     public void generateCode() {
         String packageName = "com.hanma56.cloud.route";
         boolean serviceNameStartWithI = false;//user -> UserService, 设置成true: user -> IUserService
-        generateByTables(serviceNameStartWithI, packageName, "line");
+        generateByTables(serviceNameStartWithI, packageName, "lineRoute");
     }
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {
@@ -60,7 +60,7 @@ public class GeneratorServiceEntity {
                 .setPackageInfo(
                         new PackageConfig()
                                 .setParent(packageName)
-                                .setController("controller")
+                                .setController("web.controller")
                                 .setEntity("model")
                                 .setMapper("dao")
                                 .setXml("dao")

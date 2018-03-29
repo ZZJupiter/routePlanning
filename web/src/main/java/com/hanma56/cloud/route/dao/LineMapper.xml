@@ -7,6 +7,9 @@
         lineName,
         startCityName,
         endCityName,
+        truckNo,
+        contacts,
+        contactWay,
         created,
         updated,
         creator,
@@ -18,6 +21,16 @@
     <select id="selectByCreator" resultType="com.hanma56.cloud.route.model.Line">
       SELECT <include refid="allColumn"/>
         FROM line WHERE creator = #{creator}
+        <if test="lineName!=null and lineName!=''">
+            and lineName like concat('%',#{lineName},'%')
+        </if>
+        <if test="startCityName!=null and startCityName!=''">
+            and startCityName like concat('%',#{startCityName},'%')
+        </if>
+        <if test="endCityName!=null and endCityName!=''">
+            and endCityName like concat('%',#{endCityName},'%')
+        </if>
+        order by updated desc
     </select>
 
 </mapper>

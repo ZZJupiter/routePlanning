@@ -1,10 +1,11 @@
 package com.hanma56.cloud.route.service.impl;
 
 import com.baomidou.mybatisplus.plugins.Page;
-import com.hanma56.cloud.route.model.Line;
-import com.hanma56.cloud.route.dao.LineMapper;
-import com.hanma56.cloud.route.service.LineService;
 import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.hanma56.cloud.route.dao.LineMapper;
+import com.hanma56.cloud.route.model.Line;
+import com.hanma56.cloud.route.service.LineService;
+import com.hanma56.cloud.route.web.controller.line.request.QueryLineForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,10 +28,10 @@ public class LineServiceImpl extends ServiceImpl<LineMapper, Line> implements Li
     @Override
     public void saveLine(Line line) {
         Date currentDate = new Date();
-        if(line.getId() == null){
+        if (line.getId() == null) {
             line.setCreated(currentDate);
             line.setUpdated(currentDate);
-        }else{
+        } else {
             line.setUpdated(currentDate);
         }
         insertOrUpdate(line);
@@ -38,9 +39,10 @@ public class LineServiceImpl extends ServiceImpl<LineMapper, Line> implements Li
 
 
     @Override
-    public Page<Line> queryOnePageByUserId(Long userId,int currentPage,int pageSize){
+    public Page<Line> queryOnePageByUserId(QueryLineForm form, int currentPage, int pageSize) {
         Page<Line> page = new Page<>(currentPage, pageSize);
-        page.setRecords(lineMapper.selectByCreator(page,userId));
+        page.setRecords(lineMapper.selectByCreator(page, form.getUserId(), form.getLineName(),
+                form.getStartCityName(), form.getEndCityName()));
         return page;
     }
 

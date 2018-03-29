@@ -36,7 +36,6 @@ public class LineServiceTest {
 
     @Test
     public void queryOnePage() {
-        Page<Line> page = lineService.queryOnePageByUserId(1l, 1, 10);
-        System.out.println(page);
+
     }
 }

@@ -2,6 +2,9 @@ package com.hanma56.cloud.route.web.controller.line;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.hanma56.cloud.route.convert.LineConvert;
+import com.hanma56.cloud.route.web.controller.line.request.DeleteLineForm;
+import com.hanma56.cloud.route.web.controller.line.request.SaveLineForm;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,30 +33,36 @@ public class LineController {
     @Autowired
     private LineService lineService;
 
-    @RequestMapping(value = "/list.htm")
-    public String showLineList(QueryLineForm form, Model model) {
-        model.addAttribute("form", form);
-
-        Page<Line> page = lineService.queryOnePageByUserId(form.getUserId(), form.getCurrentPage(),
-            form.getPageSize());
-        model.addAttribute("page", page);
-
-        return "line/list";
-    }
-
     @ResponseBody
     @RequestMapping(value = "/list")
     public ResultVO<Page<Line>> getLInes(@RequestBody QueryLineForm form) {
 
-        Page<Line> page = lineService.queryOnePageByUserId(form.getUserId(), form.getCurrentPage(),
-            form.getPageSize());
+        Page<Line> page = lineService.queryOnePageByUserId(form, form.getCurrentPage(),
+                form.getPageSize());
         return ResultVO.success(page);
     }
 
+
     @ResponseBody
-    @RequestMapping(value = "/json")
-    public ResultVO<JSONObject> getJson(@RequestBody JSONObject jsonObject){
-        return ResultVO.success(jsonObject);
+    @RequestMapping(value = "/save")
+    public ResultVO saveLine(@RequestBody SaveLineForm form) {
+
+        Line line = LineConvert.convert(form);
+
+        lineService.saveLine(line);
+
+        return ResultVO.success();
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete")
+    public ResultVO deleteLine(@RequestBody DeleteLineForm form) {
+
+        lineService.deleteById(form.getId());
+
+        return ResultVO.success();
+
+    }
+
 
 }

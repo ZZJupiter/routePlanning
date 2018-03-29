@@ -38,6 +38,25 @@ public class Line implements Serializable {
      */
     @TableField("endCityName")
     private String endCityName;
+
+    /**
+     * 车牌号
+     */
+    @TableField("truckNo")
+    private String truckNo;
+
+    /**
+     * 联系人
+     */
+    @TableField("contacts")
+    private String contacts;
+
+    /**
+     * 联系方式
+     */
+    @TableField("contactWay")
+    private String contactWay;
+
     /**
      * 创建时间
      */
@@ -132,18 +151,27 @@ public class Line implements Serializable {
         this.memo = memo;
     }
 
-    @Override
-    public String toString() {
-        return "Line{" +
-        ", id=" + id +
-        ", lineName=" + lineName +
-        ", startCityName=" + startCityName +
-        ", endCityName=" + endCityName +
-        ", created=" + created +
-        ", updated=" + updated +
-        ", creator=" + creator +
-        ", modifier=" + modifier +
-        ", memo=" + memo +
-        "}";
+    public String getTruckNo() {
+        return truckNo;
+    }
+
+    public void setTruckNo(String truckNo) {
+        this.truckNo = truckNo;
+    }
+
+    public String getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(String contacts) {
+        this.contacts = contacts;
+    }
+
+    public String getContactWay() {
+        return contactWay;
+    }
+
+    public void setContactWay(String contactWay) {
+        this.contactWay = contactWay;
     }
 }

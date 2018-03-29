@@ -4,6 +4,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.hanma56.cloud.route.model.Line;
+import com.hanma56.cloud.route.model.LineRoute;
+import com.hanma56.cloud.route.web.controller.line.request.LinePointVO;
 import org.springframework.beans.BeanUtils;
 
 import com.hanma56.cloud.route.core.model.PointModel;
@@ -34,5 +37,17 @@ public class PointConvert {
             pointModelList.add(convert(deliveryPoint));
         }
         return pointModelList;
+    }
+
+    public static List<LineRoute> convert(List<LinePointVO> linePointVOList, Long lineId, Long userId) {
+        List<LineRoute> lineRouteList = new ArrayList<>();
+        for(LinePointVO linePointVO:linePointVOList){
+            LineRoute lineRoute = new LineRoute();
+            BeanUtils.copyProperties(linePointVO,lineRoute);
+            lineRoute.setLineId(lineId);
+            lineRoute.setUserId(userId);
+            lineRouteList.add(lineRoute);
+        }
+        return lineRouteList;
     }
 }

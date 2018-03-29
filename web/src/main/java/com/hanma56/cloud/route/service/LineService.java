@@ -3,6 +3,7 @@ package com.hanma56.cloud.route.service;
 import com.baomidou.mybatisplus.plugins.Page;
 import com.baomidou.mybatisplus.service.IService;
 import com.hanma56.cloud.route.model.Line;
+import com.hanma56.cloud.route.web.controller.line.request.QueryLineForm;
 
 /**
  * <p>
@@ -22,11 +23,11 @@ public interface LineService extends IService<Line> {
 
     /**
      * 通过用户ID查询线路
-     * @param userId
+     * @param form
      * @param currentPage
      * @param pageSize
      * @return
      */
-    Page<Line> queryOnePageByUserId(Long userId,int currentPage,int pageSize);
+    Page<Line> queryOnePageByUserId(QueryLineForm form, int currentPage, int pageSize);
 
 }
