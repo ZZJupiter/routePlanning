@@ -69,3 +69,6 @@ logging:
 
 gaode:
   key: 9843a4770442727a800ec64ca8e0364f
+
+app.host: http://115.159.159.126:${server.port}
+

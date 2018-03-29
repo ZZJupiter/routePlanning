@@ -9,11 +9,13 @@ import com.hanma56.cloud.route.web.controller.line.request.QueryLineRouteForm;
 import com.hanma56.cloud.route.web.controller.line.request.SaveLinRouteForm;
 import com.hanma56.cloud.route.web.result.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -56,6 +58,13 @@ public class LineRouteController {
     public ResultVO deleteById(@RequestBody DeleteLinRouteForm form){
         lineRouteService.deleteById(form.getId());
         return ResultVO.success();
+    }
+
+    @RequestMapping(value = "/map")
+    public ModelAndView showRouteMap(Long lineId, Model model){
+        List<LineRoute> lineRouteList = lineRouteService.queryByLineId(lineId);
+        model.addAttribute("lineRouteList",lineRouteList);
+        return new ModelAndView("line/route");
     }
 
 

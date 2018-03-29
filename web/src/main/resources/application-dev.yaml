@@ -77,3 +77,5 @@ logging:
 
 gaode:
   key: 9843a4770442727a800ec64ca8e0364f
+
+app.host: http://localhost:${server.port}

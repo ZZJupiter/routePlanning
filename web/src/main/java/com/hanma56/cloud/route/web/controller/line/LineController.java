@@ -1,22 +1,19 @@
 package com.hanma56.cloud.route.web.controller.line;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
+import com.baomidou.mybatisplus.plugins.Page;
 import com.hanma56.cloud.route.convert.LineConvert;
+import com.hanma56.cloud.route.model.Line;
+import com.hanma56.cloud.route.service.LineService;
 import com.hanma56.cloud.route.web.controller.line.request.DeleteLineForm;
+import com.hanma56.cloud.route.web.controller.line.request.IdForm;
+import com.hanma56.cloud.route.web.controller.line.request.QueryLineForm;
 import com.hanma56.cloud.route.web.controller.line.request.SaveLineForm;
+import com.hanma56.cloud.route.web.result.ResultVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-
-import com.baomidou.mybatisplus.plugins.Page;
-import com.hanma56.cloud.route.model.Line;
-import com.hanma56.cloud.route.service.LineService;
-import com.hanma56.cloud.route.web.controller.line.request.QueryLineForm;
-import com.hanma56.cloud.route.web.result.ResultVO;
 
 /**
  * <p>
@@ -32,6 +29,7 @@ public class LineController {
 
     @Autowired
     private LineService lineService;
+
 
     @ResponseBody
     @RequestMapping(value = "/list")
@@ -61,6 +59,11 @@ public class LineController {
         lineService.deleteById(form.getId());
 
         return ResultVO.success();
+
+    }
+
+    @RequestMapping(value = "/qrcode")
+    public void getQRCode(@RequestBody IdForm form){
 
     }
 
