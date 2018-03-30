@@ -1,6 +1,8 @@
 package com.hanma56.cloud.route.web.controller.task;
 
 
+import com.hanma56.cloud.route.service.DeliverTaskService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.stereotype.Controller;
@@ -16,6 +18,11 @@ import org.springframework.stereotype.Controller;
 @Controller
 @RequestMapping("/deliverTask")
 public class DeliverTaskController {
+
+
+    @Autowired
+    private DeliverTaskService deliverTaskService;
+
 
 }
 

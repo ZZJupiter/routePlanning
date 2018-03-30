@@ -6,6 +6,8 @@
         id,
         userId,
         taskId,
+        groupNumber,
+        startTime,
         addressName,
         longitude,
         latitude,

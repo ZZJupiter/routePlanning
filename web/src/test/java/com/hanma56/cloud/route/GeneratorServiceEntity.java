@@ -28,7 +28,7 @@ public class GeneratorServiceEntity {
     public void generateCode() {
         String packageName = "com.hanma56.cloud.route";
         boolean serviceNameStartWithI = false;//user -> UserService, 设置成true: user -> IUserService
-        generateByTables(serviceNameStartWithI, packageName, "lineRoute");
+        generateByTables(serviceNameStartWithI, packageName, "deliverTask");
     }
 
     private void generateByTables(boolean serviceNameStartWithI, String packageName, String... tableNames) {

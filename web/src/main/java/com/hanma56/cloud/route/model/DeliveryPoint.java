@@ -26,57 +26,70 @@ public class DeliveryPoint implements Serializable {
      * 送货点ID
      */
     @TableId(value = "id", type = IdType.AUTO)
-    private Long              id;
+    private Long id;
     /**
      * 用户ID
      */
     @TableField("userId")
-    private Long              userId;
+    private Long userId;
 
     /**
      * 用户ID
      */
     @TableField("taskId")
-    private Long              taskId;
+    private Long taskId;
+
+    /**
+     * 分组数目
+     */
+    @TableField("groupNumber")
+    private Integer groupNumber;
+
+    /**
+     * 出发时间
+     */
+    @TableField("startTime")
+    private Date startTime;
+
     /**
      * 送货地点名称
      */
     @TableField("addressName")
-    private String            addressName;
+    private String addressName;
     /**
      * 经度
      */
-    private BigDecimal        longitude;
+    private BigDecimal longitude;
     /**
      * 纬度
      */
-    private BigDecimal        latitude;
+    private BigDecimal latitude;
     /**
      * 地点类型:出发地,目的地
      */
-    private String            pointType;
+    private String pointType;
     /**
      * 修改时间
      */
-    private Date              updated;
+    private Date updated;
     /**
      * 创建时间
      */
-    private Date              created;
+    private Date created;
 
     /**
      * 到达时间
      */
-    private Date              arriveTime;
+    private Date arriveTime;
 
     /**
      * 发车时间
      */
-    private Date              dispatchTime;
+    private Date dispatchTime;
     /**
      * 备注
      */
-    private String            memo;
+    private String memo;
 
     public Long getId() {
         return id;
@@ -172,5 +185,21 @@ public class DeliveryPoint implements Serializable {
 
     public void setDispatchTime(Date dispatchTime) {
         this.dispatchTime = dispatchTime;
+    }
+
+    public Integer getGroupNumber() {
+        return groupNumber;
+    }
+
+    public void setGroupNumber(Integer groupNumber) {
+        this.groupNumber = groupNumber;
+    }
+
+    public Date getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
     }
 }
